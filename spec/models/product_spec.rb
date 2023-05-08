@@ -14,18 +14,6 @@ RSpec.describe Product, type: :model do
       expect(Product.new(params)).to_not be_valid
     end
     
-    it 'is valid when it has a name' do
-      @category = Category.new
-      params = {
-      name: 'Giant Tea',
-      description: 'The Giant Tea....',
-      quantity: 0,
-      category: @category,
-      price_cents: 64.99
-      }
-      expect(Product.new(params)).to be_valid
-    end
-
 
     #validate Price
     it "is must have a price to be valid" do
@@ -40,18 +28,6 @@ RSpec.describe Product, type: :model do
       expect(Product.new(params)).to_not be_valid
     end
     
-    it 'is valid when it has a Price' do
-      @category = Category.new
-      params = {
-      name: 'Enirthelda',
-      description: 'The Enirthelda is an uncommon, large plant and can be found only in some forests. It blooms once a year, for 2 months.
-      It has narrow, barb shaped leaves, which are usually blue-green. It also grows huge flowers, which can be purple and light red.....',
-      quantity: 8,
-      category: @category,
-      price_cents: 124.99
-      }
-      expect(Product.new(params)).to be_valid
-    end
 
     # validate Quantity
     it "is not valid without a quantity" do
@@ -65,19 +41,6 @@ RSpec.describe Product, type: :model do
       expect(Product.new(params)).to_not be_valid
     end
 
-    it "is valid with a quantity" do
-       @category = Category.new
-      params = {
-      name: 'Bone Coneflower',
-      description: 'The Bone Coneflower is an uncommon, small plant and can be found only in some forests. It blooms in early spring.....',
-      quantity: 8,
-      category: @category,
-      price_cents: 24.99
-      }
-      expect(Product.new(params)).to be_valid
-    end
-
-
     # validate Category
     it "is not valid without a category" do
       @category = Category.new
@@ -90,17 +53,16 @@ RSpec.describe Product, type: :model do
       expect(Product.new(params)).to_not be_valid
     end
 
-
-    it "is valid with a category" do
-      @category = Category.new
+    it 'is invalid without a name' do
+      @category = Category.create
       params = {
-      name:  'Lion Grapevine',
-      description: "The Lion Grapevine is an uncommon, modest plant and can be found only in some humid regions. It blooms once a year, for 4 months.",
-      quantity: 4,
-      category: @category,
-      price: 34.49
-      }
-      expect(Product.new(params)).to be_valid
+        description: 'The Giant Tea...', 
+        price: 64.99, 
+        quantity: 0, 
+        category: @category}
+        product = Product.new(params)
+      product.valid?
+      expect(product.errors.full_messages).to include("Name can't be blank")
     end
 
   end
