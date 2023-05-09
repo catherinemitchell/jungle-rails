@@ -11,9 +11,10 @@ RSpec.describe Product, type: :model do
       category: @category,
       price_cents: 64.99
       }
-      expect(Product.new(params)).to_not be_valid
+      product = Product.new(params)
+      expect(product.valid?).to be(false)
     end
-    
+
 
     #validate Price
     it "is must have a price to be valid" do
@@ -25,10 +26,10 @@ RSpec.describe Product, type: :model do
       quantity: 8,
       category: @category
       }
-      expect(Product.new(params)).to_not be_valid
+      product = Product.new(params)
+      expect(product.valid?).to be(false)
     end
     
-
     # validate Quantity
     it "is not valid without a quantity" do
        @category = Category.new
@@ -38,7 +39,8 @@ RSpec.describe Product, type: :model do
       category: @category,
       price_cents: 24.99
       }
-      expect(Product.new(params)).to_not be_valid
+      product = Product.new(params)
+      expect(product.valid?).to be(false)
     end
 
     # validate Category
@@ -50,7 +52,22 @@ RSpec.describe Product, type: :model do
       quantity: 4,
       price: 34.49
       }
-      expect(Product.new(params)).to_not be_valid
+      product = Product.new(params)
+      expect(product.valid?).to be(false)
+    end
+
+
+    it "is valid with a category" do
+      @category = Category.new
+      params = {
+      name:  'Lion Grapevine',
+      description: "The Lion Grapevine is an uncommon, modest plant and can be found only in some humid regions. It blooms once a year, for 4 months.",
+      quantity: 4,
+      category: @category,
+      price: 34.49
+      }
+      product = Product.new(params)
+      expect(product.valid?).to be(true)
     end
 
     it 'is invalid without a name' do
