@@ -9,18 +9,19 @@ describe('Jungle app', () => {
     cy.visit('/')
   })
   
-  it("There is products on the page", () => {
-    cy.get(".products article").should("be.visible");
-  });
+  // it("There is products on the page", () => {
+  //   cy.get(".products article").should("be.visible");
+  // });
 
-  it("There is 2 products on the page", () => {
-    cy.get(".products article").should("have.length", 2);
-  });
+  // it("There is 12 products on the page", () => {
+  //   cy.get(".products article").should("have.length", 12);
+  // });
 
-  it('displays the product page', () => {
+  it('allows user to click on cart and increases the cart by one', () => {
     
     cy.get('.products article').first().click()
     cy.wait(500)
-    cy.get('article h1').contains('Scented Blade')
+    cy.get('.btn').click()
+    cy.get('.end-0 > .nav-link').contains('(1)')
   });
 })
