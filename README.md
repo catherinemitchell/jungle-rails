@@ -1,6 +1,13 @@
 # Jungle
 
-A mini e-commerce application built with Rails 6.1 for purposes of teaching Rails by example.
+A mini e-commerce application built with Rails 6.1 for purposes of teaching Rails by example.  Allows users to browse different categories and products, signup and login, checkout and pay, and provides a password protected admin section.
+
+## Final Product
+
+![Screenshot of home page with nav bar](https://github.com/catherinemitchell/jungle-rails/blob/master/docs/Home-page-navbar.png?raw=true)
+![Screenshot cart page](https://github.com/catherinemitchell/jungle-rails/blob/master/docs/Cart-page.png?raw=true)
+![Screenshot of categories page](https://github.com/catherinemitchell/jungle-rails/blob/master/docs/Categories-page.png?raw=true)
+![Screenshot of login page](https://github.com/catherinemitchell/jungle-rails/blob/master/docs/Login-page.png?raw=true)
 
 ## Setup
 
