@@ -8,14 +8,6 @@ describe('Jungle app', () => {
     // we include it in our beforeEach function so that it runs before each test
     cy.visit('/')
   })
-  
-  // it("There is products on the page", () => {
-  //   cy.get(".products article").should("be.visible");
-  // });
-
-  // it("There is 12 products on the page", () => {
-  //   cy.get(".products article").should("have.length", 12);
-  // });
 
   it('allows user to click on cart and increases the cart by one', () => {
     
